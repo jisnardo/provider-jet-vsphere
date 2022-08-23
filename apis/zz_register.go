@@ -22,15 +22,91 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/crossplane-contrib/provider-jet-vsphere/apis/null/v1alpha1"
-	v1alpha1apis "github.com/crossplane-contrib/provider-jet-vsphere/apis/v1alpha1"
+	v1alpha1 "github.com/crossplane-contrib/provider-jet-vsphere/apis/v1alpha1"
+	v1alpha1vspherecomputecluster "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputecluster/v1alpha1"
+	v1alpha1vspherecomputeclusterhostgroup "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclusterhostgroup/v1alpha1"
+	v1alpha1vspherecomputeclustervmaffinityrule "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclustervmaffinityrule/v1alpha1"
+	v1alpha1vspherecomputeclustervmantiaffinityrule "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclustervmantiaffinityrule/v1alpha1"
+	v1alpha1vspherecomputeclustervmdependencyrule "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclustervmdependencyrule/v1alpha1"
+	v1alpha1vspherecomputeclustervmgroup "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclustervmgroup/v1alpha1"
+	v1alpha1vspherecomputeclustervmhostrule "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecomputeclustervmhostrule/v1alpha1"
+	v1alpha1vspherecontentlibrary "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecontentlibrary/v1alpha1"
+	v1alpha1vspherecontentlibraryitem "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecontentlibraryitem/v1alpha1"
+	v1alpha1vspherecustomattribute "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherecustomattribute/v1alpha1"
+	v1alpha1vspheredatacenter "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredatacenter/v1alpha1"
+	v1alpha1vspheredatastorecluster "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredatastorecluster/v1alpha1"
+	v1alpha1vspheredatastoreclustervmantiaffinityrule "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredatastoreclustervmantiaffinityrule/v1alpha1"
+	v1alpha1vspheredistributedportgroup "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredistributedportgroup/v1alpha1"
+	v1alpha1vspheredistributedvirtualswitch "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredistributedvirtualswitch/v1alpha1"
+	v1alpha1vspheredpmhostoverride "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredpmhostoverride/v1alpha1"
+	v1alpha1vspheredrsvmoverride "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheredrsvmoverride/v1alpha1"
+	v1alpha1vsphereentitypermissions "github.com/crossplane-contrib/provider-jet-vsphere/apis/vsphereentitypermissions/v1alpha1"
+	v1alpha1vspherefile "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherefile/v1alpha1"
+	v1alpha1vspherefolder "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherefolder/v1alpha1"
+	v1alpha1vspherehavmoverride "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherehavmoverride/v1alpha1"
+	v1alpha1vspherehost "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherehost/v1alpha1"
+	v1alpha1vspherehostportgroup "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherehostportgroup/v1alpha1"
+	v1alpha1vspherehostvirtualswitch "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherehostvirtualswitch/v1alpha1"
+	v1alpha1vspherelicense "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherelicense/v1alpha1"
+	v1alpha1vspherenasdatastore "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherenasdatastore/v1alpha1"
+	v1alpha1vsphereresourcepool "github.com/crossplane-contrib/provider-jet-vsphere/apis/vsphereresourcepool/v1alpha1"
+	v1alpha1vsphererole "github.com/crossplane-contrib/provider-jet-vsphere/apis/vsphererole/v1alpha1"
+	v1alpha1vspherestoragedrsvmoverride "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherestoragedrsvmoverride/v1alpha1"
+	v1alpha1vspheretag "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheretag/v1alpha1"
+	v1alpha1vspheretagcategory "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspheretagcategory/v1alpha1"
+	v1alpha1vspherevappcontainer "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevappcontainer/v1alpha1"
+	v1alpha1vspherevappentity "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevappentity/v1alpha1"
+	v1alpha1vspherevirtualdisk "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevirtualdisk/v1alpha1"
+	v1alpha1vspherevirtualmachine "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevirtualmachine/v1alpha1"
+	v1alpha1vspherevirtualmachinesnapshot "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevirtualmachinesnapshot/v1alpha1"
+	v1alpha1vspherevmfsdatastore "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevmfsdatastore/v1alpha1"
+	v1alpha1vspherevmstoragepolicy "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevmstoragepolicy/v1alpha1"
+	v1alpha1vspherevnic "github.com/crossplane-contrib/provider-jet-vsphere/apis/vspherevnic/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
-		v1alpha1apis.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputecluster.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclusterhostgroup.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclustervmaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclustervmantiaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclustervmdependencyrule.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclustervmgroup.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecomputeclustervmhostrule.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecontentlibrary.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecontentlibraryitem.SchemeBuilder.AddToScheme,
+		v1alpha1vspherecustomattribute.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredatacenter.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredatastorecluster.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredatastoreclustervmantiaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredistributedportgroup.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredistributedvirtualswitch.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredpmhostoverride.SchemeBuilder.AddToScheme,
+		v1alpha1vspheredrsvmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1vsphereentitypermissions.SchemeBuilder.AddToScheme,
+		v1alpha1vspherefile.SchemeBuilder.AddToScheme,
+		v1alpha1vspherefolder.SchemeBuilder.AddToScheme,
+		v1alpha1vspherehavmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1vspherehost.SchemeBuilder.AddToScheme,
+		v1alpha1vspherehostportgroup.SchemeBuilder.AddToScheme,
+		v1alpha1vspherehostvirtualswitch.SchemeBuilder.AddToScheme,
+		v1alpha1vspherelicense.SchemeBuilder.AddToScheme,
+		v1alpha1vspherenasdatastore.SchemeBuilder.AddToScheme,
+		v1alpha1vsphereresourcepool.SchemeBuilder.AddToScheme,
+		v1alpha1vsphererole.SchemeBuilder.AddToScheme,
+		v1alpha1vspherestoragedrsvmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1vspheretag.SchemeBuilder.AddToScheme,
+		v1alpha1vspheretagcategory.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevappcontainer.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevappentity.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevirtualdisk.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevirtualmachine.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevirtualmachinesnapshot.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevmfsdatastore.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevmstoragepolicy.SchemeBuilder.AddToScheme,
+		v1alpha1vspherevnic.SchemeBuilder.AddToScheme,
 	)
 }
 
